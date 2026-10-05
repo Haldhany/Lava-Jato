@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07100d">
+
+    <title>Lava Jato do DAN</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- FUNDO COM GRADIENTE -->
+    <div class="video-fundo" aria-hidden="true"></div>
+
+    <div class="sobreposicao"></div>
+
+    <!-- SISTEMA -->
+    <main class="sistema">
+
+        <!-- TOPO -->
+        <header class="topo">
+
+            <div>
+                <span class="tag">LAVA JATO</span>
+                <h1>Lava Jato do DAN</h1>
+                <p>Controle profissional do seu lava jato</p>
+            </div>
+
+            <div class="status">
+                <span class="bolinha"></span>
+                Sistema online
+            </div>
+
+            <button type="button" id="alterarNomeLoja" class="btn-configurar-loja">
+                Alterar nome
+            </button>
+
+            <button type="button" id="abrirPrecos" class="btn-configurar-loja">
+                Serviços e preços
+            </button>
+
+            <button type="button" id="instalarApp" class="btn-instalar">
+                Instalar aplicativo
+            </button>
+
+        </header>
+
+        <section id="painelNomeLoja" class="painel configuracao-loja hidden">
+            <div class="titulo-painel">
+                <span class="mini-titulo">PERSONALIZE SEU SISTEMA</span>
+                <h2>Qual é o nome do seu lava-jato?</h2>
+                <p class="ajuda-loja">
+                    Esse nome aparecerá no sistema deste aparelho. Seus registros ficam salvos
+                    neste navegador.
+                </p>
+            </div>
+
+            <form id="formNomeLoja">
+                <div class="campo">
+                    <label for="nomeLoja">Nome do lava-jato</label>
+                    <input
+                        type="text"
+                        id="nomeLoja"
+                        maxlength="60"
+                        placeholder="Ex.: Lava Jato do João"
+                        autocomplete="organization"
+                        required
+                    >
+                </div>
+
+                <button type="submit" class="btn-registrar">
+                    Salvar nome
+                </button>
+            </form>
+        </section>
+
+        <section id="painelPrecos" class="painel configuracao-loja hidden">
+            <div class="titulo-painel">
+                <span class="mini-titulo">SERVIÇOS DO SEU ESTABELECIMENTO</span>
+                <h2>Configure seus serviços e preços</h2>
+                <p class="ajuda-loja">
+                    Adicione, renomeie ou remova serviços e defina o preço de cada um.
+                    As alterações não mudam as lavagens já registradas.
+                </p>
+            </div>
+
+            <form id="formPrecos">
+                <div id="listaServicosConfig" class="lista-servicos-config"></div>
+
+                <div class="acoes-precos">
+                    <button type="button" id="adicionarServico" class="btn-cancelar">
+                        + Adicionar serviço
+                    </button>
+                    <button type="submit" class="btn-registrar">
+                        Salvar serviços
+                    </button>
+                    <button type="button" id="cancelarPrecos" class="btn-cancelar">
+                        Cancelar
+                    </button>
+                </div>
+            </form>
+        </section>
+
+
+        <!-- RESUMO -->
+        <section class="resumo">
+
+            <div class="card-resumo">
+                <span>Hoje</span>
+                <strong id="totalHoje">R$ 0,00</strong>
+                <small id="lavagensHoje">0 lavagens</small>
+            </div>
+
+            <div class="card-resumo">
+                <span>Esta semana</span>
+                <strong id="totalSemana">R$ 0,00</strong>
+                <small>Faturamento semanal</small>
+            </div>
+
+            <div class="card-resumo">
+                <span>Este mês</span>
+                <strong id="totalMes">R$ 0,00</strong>
+                <small>Faturamento mensal</small>
+            </div>
+
+            <div class="card-resumo destaque">
+                <span>Este ano</span>
+                <strong id="totalAno">R$ 0,00</strong>
+                <small>Faturamento anual</small>
+            </div>
+
+        </section>
+
+
+        <!-- NOVA LAVAGEM -->
+        <section class="painel">
+
+            <div class="titulo-painel">
+                <div>
+                    <span class="mini-titulo">REGISTRAR SERVIÇO</span>
+                    <h2>Nova lavagem</h2>
+                </div>
+            </div>
+
+            <form id="formLavagem">
+
+                <div class="campo">
+                    <label>Cliente</label>
+                    <input
+                        type="text"
+                        id="cliente"
+                        placeholder="Nome do cliente"
+                        required
+                    >
+                </div>
+
+                <div class="campo">
+                    <label>Veículo</label>
+
+                    <select id="veiculo" required>
+                        <option value="">Selecione</option>
+                        <option value="Moto">🏍️ Moto</option>
+                        <option value="Carro">🚗 Carro</option>
+                        <option value="SUV">🚙 SUV</option>
+                        <option value="Caminhonete">🛻 Caminhonete</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>Serviço</label>
+
+                    <select id="servico" required>
+
+                        <option value="">Selecione o serviço</option>
+
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>Pagamento</label>
+
+                    <select id="pagamento" required>
+                        <option value="">Selecione</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão">Cartão</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-registrar" id="btnRegistrar">
+                    Registrar lavagem
+                </button>
+
+                <button type="button" class="btn-cancelar hidden" id="cancelarEdicao">
+                    Cancelar edição
+                </button>
+
+                <input type="hidden" id="lavagemIdEditando" value="">
+
+            </form>
+
+        </section>
+
+
+        <!-- HISTÓRICO -->
+        <section class="painel">
+
+            <div class="titulo-painel historico-topo">
+
+                <div>
+                    <span class="mini-titulo">MOVIMENTAÇÃO</span>
+                    <h2>Lavagens recentes</h2>
+                </div>
+
+                <button id="limparTudo" class="btn-limpar">
+                    Limpar histórico
+                </button>
+
+            </div>
+
+            <div id="listaLavagens" class="lista-lavagens">
+
+                <div class="sem-registros">
+                    Nenhuma lavagem registrada.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RODAPÉ -->
+        <footer>
+            <p>© 2026 <span id="nomeLojaRodape">Lava Jato</span></p>
+            <span>Controle profissional de lavagens</span>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,532 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    color: #ffffff;
+    background: #07100d;
+}
+
+
+/* =========================
+   VÍDEO DE FUNDO
+========================= */
+
+.video-fundo {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top, rgba(31, 92, 72, 0.65), transparent 35%),
+        linear-gradient(120deg, rgba(4, 16, 12, 0.95), rgba(7, 28, 20, 0.92));
+}
+
+.sobreposicao {
+    position: fixed;
+    inset: 0;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(3, 12, 9, 0.94),
+            rgba(5, 30, 22, 0.82)
+        );
+    z-index: -2;
+}
+
+
+/* =========================
+   SISTEMA
+========================= */
+
+.sistema {
+    width: min(1200px, 94%);
+    margin: auto;
+    padding: 35px 0;
+}
+
+
+/* =========================
+   TOPO
+========================= */
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 7px 12px;
+    background: rgba(36, 211, 150, 0.15);
+    border: 1px solid rgba(36, 211, 150, 0.35);
+    border-radius: 30px;
+    color: #36e0a2;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: clamp(30px, 5vw, 52px);
+    margin-top: 10px;
+}
+
+.topo p {
+    color: #aab9b4;
+    margin-top: 6px;
+}
+
+.status {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 12px 17px;
+    border-radius: 30px;
+    color: #d8e2df;
+    font-size: 13px;
+}
+
+.btn-instalar {
+    border: 1px solid rgba(54, 224, 162, 0.5);
+    border-radius: 30px;
+    padding: 12px 17px;
+    background: #27d994;
+    color: #04130d;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-instalar:hover {
+    filter: brightness(1.08);
+}
+
+.btn-configurar-loja {
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 30px;
+    padding: 12px 17px;
+    background: rgba(255,255,255,0.06);
+    color: #d8e2df;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-configurar-loja:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.configuracao-loja {
+    margin-bottom: 20px;
+}
+
+.ajuda-loja {
+    color: #9aaca6;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+.configuracao-loja #formNomeLoja {
+    grid-template-columns: minmax(0, 1fr) auto;
+}
+
+#formPrecos {
+    display: block;
+}
+
+.lista-servicos-config {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.linha-servico-config {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(140px, 0.35fr) auto;
+    align-items: end;
+    gap: 12px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.035);
+}
+
+.acoes-precos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.btn-remover-servico {
+    height: 48px;
+    border: 1px solid rgba(255, 100, 100, 0.25);
+    border-radius: 12px;
+    padding: 0 14px;
+    background: rgba(255, 70, 70, 0.1);
+    color: #ff9c9c;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.bolinha {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #38e59e;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+
+/* =========================
+   RESUMO
+========================= */
+
+.resumo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card-resumo {
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(7, 22, 17, 0.86);
+    border: 1px solid rgba(255,255,255,0.10);
+    backdrop-filter: blur(10px);
+}
+
+.card-resumo span {
+    display: block;
+    color: #8fa39c;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.card-resumo strong {
+    display: block;
+    font-size: 25px;
+}
+
+.card-resumo small {
+    display: block;
+    margin-top: 7px;
+    color: #789088;
+}
+
+.card-resumo.destaque {
+    border-color: rgba(52, 224, 158, 0.35);
+}
+
+
+/* =========================
+   PAINÉIS
+========================= */
+
+.painel {
+    background: rgba(5, 18, 14, 0.90);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 22px;
+    padding: 25px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(12px);
+}
+
+.titulo-painel {
+    margin-bottom: 20px;
+}
+
+.mini-titulo {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #39dda0;
+    font-weight: bold;
+}
+
+h2 {
+    margin-top: 5px;
+    font-size: 22px;
+}
+
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    align-items: end;
+}
+
+.campo label {
+    display: block;
+    font-size: 12px;
+    color: #9aacA5;
+    margin-bottom: 7px;
+}
+
+.campo input,
+.campo select {
+    width: 100%;
+    height: 48px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.06);
+    color: white;
+    padding: 0 14px;
+    outline: none;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: #38d99c;
+}
+
+.campo select option {
+    background: #10231c;
+    color: white;
+}
+
+.btn-registrar {
+    height: 48px;
+    border: none;
+    border-radius: 12px;
+    background: #27d994;
+    color: #04130d;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-registrar:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+.btn-cancelar {
+    height: 48px;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+    color: #dfeae7;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-cancelar:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================
+   HISTÓRICO
+========================= */
+
+.historico-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-limpar {
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: #b6c4bf;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn-limpar:hover {
+    background: rgba(255,255,255,0.07);
+}
+
+.lista-lavagens {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lavagem {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    align-items: center;
+    gap: 15px;
+    padding: 17px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.045);
+    border: 1px solid rgba(255,255,255,0.07);
+}
+
+.cliente-nome {
+    font-weight: bold;
+}
+
+.detalhe {
+    color: #9aaca6;
+    font-size: 13px;
+}
+
+.valor {
+    color: #39dfa0;
+    font-weight: bold;
+}
+
+.btn-excluir,
+.btn-editar {
+    border: none;
+    padding: 9px 11px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-excluir {
+    background: rgba(255, 70, 70, 0.12);
+    color: #ff8b8b;
+}
+
+.btn-editar {
+    background: rgba(42, 199, 140, 0.12);
+    color: #7af0c2;
+}
+
+.acoes-lavagem {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.sem-registros {
+    text-align: center;
+    padding: 30px;
+    color: #73847e;
+}
+
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: #71827c;
+    font-size: 12px;
+}
+
+footer span {
+    display: block;
+    margin-top: 5px;
+}
+
+footer #nomeLojaRodape {
+    display: inline;
+    margin-top: 0;
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 850px) {
+
+    .resumo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .btn-registrar {
+        width: 100%;
+    }
+
+    .lavagem {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .sistema {
+        width: 92%;
+        padding: 22px 0;
+    }
+
+    .topo {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .status {
+        align-self: flex-start;
+    }
+
+    .linha-servico-config {
+        grid-template-columns: 1fr;
+    }
+
+    .acoes-precos {
+        flex-direction: column;
+    }
+
+    .acoes-precos button {
+        width: 100%;
+    }
+
+    .resumo {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card-resumo {
+        padding: 16px;
+    }
+
+    .card-resumo strong {
+        font-size: 19px;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+
+    .painel {
+        padding: 18px;
+        border-radius: 18px;
+    }
+
+    .historico-topo {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .lavagem {
+        grid-template-columns: 1fr;
+    }
+}
